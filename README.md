@@ -1,2 +1,2 @@
 # DevFinder
- a place to find dev
+ a place to find developers
