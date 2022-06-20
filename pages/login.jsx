@@ -10,14 +10,17 @@ function Login() {
   const providers = [
     {
       name: "github",
-      Icon: "BsGithub",
+      Icon: <BsGithub size={25} />,
     },
     {
       name: "google",
-      Icon: "BsGoogle",
+      Icon: <BsGoogle size={25} />,
     },
   ];
-  const handleOAuthSignIn = (provider) => () => signIn(provider, {callbackUrl: '/'});
+
+  const icon = `BsGithub`;
+  const handleOAuthSignIn = (provider) => () =>
+    signIn(provider, { callbackUrl: "/" });
 
   return (
     <div className="h-screen gradient-form bg-gray-200 md:h-screen justify-center flex items-center">
@@ -43,9 +46,9 @@ function Login() {
                             className="flex items-center justify-center px-6 py-2.5 text-white font-medium text-lg leading-tight rounded shadow-md hover:shadow-lg transition duration-300 ease-in-out w-full mb-3 bg-[#ee7724] hover:bg-[#b44593] "
                             type="button"
                             onClick={handleOAuthSignIn(name)}
-                            leftIcon={<Icon />}
                           >
                             Log in using {name} &nbsp;
+                            {Icon}
                           </button>
                         ))}
                       </div>
