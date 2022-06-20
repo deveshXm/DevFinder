@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
+import Image from "next/image";
 
 const Home: NextPage = () => {
   //session will give email id and repository names
@@ -11,7 +12,7 @@ const Home: NextPage = () => {
   console.log(session);
   const router = useRouter();
 
-  if(status !== 'loading'){
+  if (status !== "loading") {
     if (!session && typeof session != "undefined") {
       router.push(`/login`);
     }
@@ -29,12 +30,15 @@ const Home: NextPage = () => {
           <div>
             <h1>you are signed in as {session.user?.email}</h1>
             {/* Redirect to login page if sign out is clicked */}
-            <button onClick={() => signOut({ callbackUrl: "/login" })} className='border border-black p-2 rounded'>
+            <button
+              onClick={() => signOut({ callbackUrl: "/login" })}
+              className="border border-black p-2 rounded"
+            >
               sign out
             </button>
           </div>
         ) : (
-          <h1>you are not signed in</h1>
+          <h1>You are not signed in. Redirecting...</h1>
         )}
       </main>
     </div>
