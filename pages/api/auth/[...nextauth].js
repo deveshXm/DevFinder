@@ -17,5 +17,6 @@ export default NextAuth({
   ],
   pages: {
     signIn: '/login.tsx'
-  }
+  },
+  secret: process.env.NEXTAUTH_SECRET,
 });
