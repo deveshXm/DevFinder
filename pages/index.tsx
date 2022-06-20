@@ -5,22 +5,17 @@ import { useRouter } from "next/router";
 import { useEffect } from "react";
 
 const Home: NextPage = () => {
+  //session will give email id and repository names
 
   const { data: session, status } = useSession();
   console.log(session);
   const router = useRouter();
 
-  useEffect(()=>{
-    if(status!=='loading'){
-      if (session) {
-        console.log("session = true")
-        router.push('/')
-      }else{
-        // maybe go to login page
-        router.push('/login')
+  if(status !== 'loading'){
+    if (!session && typeof session != "undefined") {
+      router.push(`/login`);
     }
-   }
-  },[router,session])
+  }
 
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
