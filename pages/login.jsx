@@ -1,6 +1,7 @@
 import React from "react";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { BsGoogle, BsGithub } from "react-icons/bs";
+import { AiOutlineGitlab } from "react-icons/ai";
 import { useRouter } from "next/router";
 
 function Login() {
@@ -13,6 +14,10 @@ function Login() {
       Icon: <BsGithub size={25} />,
     },
     {
+      name: "gitlab",
+      Icon: <AiOutlineGitlab size={25} />,
+    },
+    {
       name: "google",
       Icon: <BsGoogle size={25} />,
     },
@@ -20,7 +25,7 @@ function Login() {
 
   const icon = `BsGithub`;
   const handleOAuthSignIn = (provider) => () =>
-    signIn(provider, { callbackUrl: "/" });
+    signIn(provider, { callbackUrl: "/home" });
 
   return (
     <div className="h-screen gradient-form bg-gray-200 md:h-screen justify-center flex items-center">

@@ -1,5 +1,6 @@
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
+import GitlabProvider from "next-auth/providers/gitlab";
 import GoogleProvider from "next-auth/providers/google";
 
 export default NextAuth({
@@ -13,10 +14,14 @@ export default NextAuth({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
     }),
+    GitlabProvider({
+      clientId: process.env.GITLAB_CLIENT_ID,
+      clientSecret: process.env.GITLAB_CLIENT_SECRET,
+    }),
     // ...add more providers here
   ],
   pages: {
-    signIn: '/login.tsx'
+    signIn: '/login.jsx'
   },
   secret: process.env.NEXTAUTH_SECRET,
 });

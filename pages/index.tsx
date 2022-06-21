@@ -4,6 +4,8 @@ import { useSession, signOut } from "next-auth/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import Image from "next/image";
+import Hero from "../components/Hero";
+import Navbar from "../components/Navbar";
 
 const Home: NextPage = () => {
   //session will give email id and repository names
@@ -12,34 +14,22 @@ const Home: NextPage = () => {
   console.log(session);
   const router = useRouter();
 
-  if (status !== "loading") {
-    if (!session && typeof session != "undefined") {
-      router.push(`/login`);
-    }
-  }
+  // if (status !== "loading") {
+  //   if (!session && typeof session != "undefined") {
+  //     router.push(`/login`);
+  //   }
+  // }
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div >
       <Head>
-        <title>Create Next App</title>
+        <title>DevFinder</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="flex w-full flex-1 flex-col items-center justify-center px-20 text-center">
-        {session ? (
-          <div>
-            <h1>you are signed in as {session.user?.email}</h1>
-            {/* Redirect to login page if sign out is clicked */}
-            <button
-              onClick={() => signOut({ callbackUrl: "/login" })}
-              className="border border-black p-2 rounded"
-            >
-              sign out
-            </button>
-          </div>
-        ) : (
-          <h1>You are not signed in. Redirecting...</h1>
-        )}
+      <main>
+        <Navbar />
+        <Hero />
       </main>
     </div>
   );
